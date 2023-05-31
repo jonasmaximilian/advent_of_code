@@ -10,14 +10,16 @@ with open('input.txt') as f:
 
 lines = [line.strip() for line in lines]
 
+#divide into lists of 3
+groups = [lines[i:i+3] for i in range(0, len(lines), 3)]
+
 duplicates = []
 
-for line in lines:
-    for char in line[:int(len(line)/2)]:
-        if char in line[int(len(line)/2):]:
-            
+for group in groups:
+    for char in group[0]:
+        if char in group[1] and char in group[2]:
             duplicates.append(char)
-            break
+            break;
 
 duplicates = [convert_to_prio(char) for char in duplicates]
 
