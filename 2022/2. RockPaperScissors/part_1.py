@@ -16,5 +16,5 @@ for round in guide:
 
     if (opponent == 'A' and me == 'Y') or (opponent == 'B' and me == 'Z') or (opponent == 'C' and me == 'X'):
         points += 6
-        
+
 print(points)

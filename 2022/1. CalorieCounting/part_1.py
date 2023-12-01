@@ -1,24 +1,25 @@
+"""Module providing the reduce method"""
 import functools
 
-with open('input.txt') as f:
-    input = f.readlines()
+with open('content.txt', encoding="utf-8") as f:
+    content = f.readlines()
 
-input = [int(line.strip()) if line != '\n' else -1 for line in input]
+content = [int(line.strip()) if line != '\n' else -1 for line in content]
 
 sublist = [[]]
 
-for item in input:
+for item in content:
     if item == -1:
         sublist.append([])
     else:
         sublist[-1].append(item)
 
 for inventory in sublist:
-    sum = functools.reduce(lambda a, b: a + b, inventory)
-    inventory[:] = [sum]
+    inventory_sum = functools.reduce(lambda a, b: a + b, inventory)
+    inventory[:] = [inventory_sum]
 
 maximum_wrapped = [max(inventory) for inventory in sublist]
 
-maximum = max([inventory for inventory in maximum_wrapped])
+maximum = max((inventory for inventory in maximum_wrapped))
 
 print(maximum)

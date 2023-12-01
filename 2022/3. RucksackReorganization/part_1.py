@@ -1,9 +1,11 @@
 import functools
 
+
 def convert_to_prio(char):
     if char.isupper():
         return ord(char) - 38
     return ord(char) - 96
+
 
 with open('input.txt') as f:
     lines = f.readlines()
@@ -15,7 +17,7 @@ duplicates = []
 for line in lines:
     for char in line[:int(len(line)/2)]:
         if char in line[int(len(line)/2):]:
-            
+
             duplicates.append(char)
             break
 
